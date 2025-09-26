@@ -128,6 +128,9 @@ require('lazy').setup({
 
         -- LaTeX
         lspconfig.texlab.setup{}
+
+        -- C and C++
+        lspconfig.clangd.setup{}
     end},
     {'hrsh7th/cmp-nvim-lsp'},  -- LSP completions source for nvim-cmp
     {'hrsh7th/nvim-cmp'},      -- Autocompletion plugin
