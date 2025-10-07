@@ -21,3 +21,6 @@ vim.api.nvim_set_keymap('n', '<leader>s', ':w<cr>', { noremap = true, silent = t
 
 -- norm shortcut
 vim.api.nvim_set_keymap('v', '<leader>n', ':norm ', { noremap = true, silent = true, desc = "Enter norm mode" })
+
+-- find and replace
+vim.api.nvim_set_keymap('n', '<leader>fr', ':%s/', { noremap = true, silent = true, desc = "Find and replace" })

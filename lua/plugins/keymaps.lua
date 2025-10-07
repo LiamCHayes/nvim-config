@@ -5,6 +5,9 @@ vim.keymap.set("n", "<leader>fz", ":Telescope live_grep<cr>", { desc = "Grep fil
 -- file tree
 vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>", { desc = "Toggle file tree" })
 
+-- undo tree
+vim.keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", { desc = "Toggle Undotree" })
+
 -- lsp
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')

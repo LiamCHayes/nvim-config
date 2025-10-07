@@ -28,6 +28,11 @@ require('lazy').setup({
         require("nvim-tree").setup {}
     end},
 
+    -- Undo tree
+    { "mbbill/undotree",
+    cmd = "UndotreeToggle",
+    },
+
     -- Show open buffers as tabs
     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
 
