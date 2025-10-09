@@ -10,14 +10,6 @@ vim.keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", { desc = "Toggle Undotre
 
 -- lsp
 local lspconfig = require('lspconfig')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-
-local lspconfig_defaults = lspconfig.util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-    'force',
-    lspconfig_defaults.capabilities,
-    cmp_nvim_lsp.default_capabilities()
-)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',

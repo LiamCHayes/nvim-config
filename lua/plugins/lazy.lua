@@ -51,15 +51,6 @@ require('lazy').setup({
         end
     },
 
-    -- LaTeX snippets for nvim-cmp (requires LuaSnip)
-    {
-        "L3MON4D3/LuaSnip",
-        dependencies = { "saadparwaiz1/cmp_luasnip" },
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end
-    },
-
     -- Typst LSP
     {
         "nvim-lspconfig",
@@ -123,42 +114,51 @@ require('lazy').setup({
     {'neovim/nvim-lspconfig', tag = 'v1.8.0', pin = true, 
     config = function()
         local lspconfig = require('lspconfig')
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+
         -- Setup language servers here
 
         -- Python
-        lspconfig.pyright.setup{}
+        lspconfig.pyright.setup{ capabilities = capabilities }
 
         -- Rust
-        lspconfig.rust_analyzer.setup{}
+        lspconfig.rust_analyzer.setup{ capabilities = capabilities }
 
         -- LaTeX
-        lspconfig.texlab.setup{}
+        lspconfig.texlab.setup{ capabilities = capabilities }
 
         -- C and C++
-        lspconfig.clangd.setup{}
+        lspconfig.clangd.setup{ capabilities = capabilities }
     end},
-    {'hrsh7th/cmp-nvim-lsp'},  -- LSP completions source for nvim-cmp
-    {'hrsh7th/nvim-cmp'},      -- Autocompletion plugin
-})
 
--- Setup nvim-cmp.
-local cmp = require'cmp'
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            -- You can use either LuaSnip or other snippet engines here
-            -- For now, leave empty or add your snippet expand function.
-        end,
-    },
-    mapping = {
-        ['<C-n>'] = cmp.mapping.select_next_item(),      -- Ctrl+n to select next item
-        ['<C-p>'] = cmp.mapping.select_prev_item(),      -- Ctrl+p to select previous item
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Enter confirms selection
-        ['<C-Space>'] = cmp.mapping.complete(),          -- Ctrl+Space to trigger completion manually
-    },
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },   -- LSP completions source
-        -- Add other sources here, e.g., buffer, path, etc.
-    }),
+    {
+      'saghen/blink.cmp',
+      dependencies = { 'rafamadriz/friendly-snippets' },
+      version = '1.*',
+      opts = {
+        -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+        -- 'super-tab' for mappings similar to vscode (tab to accept)
+        -- 'enter' for enter to accept
+        -- 'none' for no mappings
+        --
+        -- All presets have the following mappings:
+        -- C-space: Open menu or open docs if already open
+        -- C-n/C-p or Up/Down: Select next/previous item
+        -- C-e: Hide menu
+        -- C-k: Toggle signature help (if signature.enabled = true)
+        --
+        -- See :h blink-cmp-config-keymap for defining your own keymap
+        keymap = { preset = 'enter' },
+        signature = { enabled = true },
+        completion = { documentation = { auto_show = true } },
+        appearance = {
+          nerd_font_variant = 'mono'
+        },
+        sources = {
+          default = { 'lsp', 'path', 'snippets', 'buffer' },
+        },
+        fuzzy = { implementation = "prefer_rust_with_warning" }
+      },
+      opts_extend = { "sources.default" }
+    }
 })
