@@ -29,9 +29,7 @@ require('lazy').setup({
     end},
 
     -- Undo tree
-    { "mbbill/undotree",
-    cmd = "UndotreeToggle",
-    },
+    { "mbbill/undotree", cmd = "UndotreeToggle" },
 
     -- Show open buffers as tabs
     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
@@ -41,6 +39,22 @@ require('lazy').setup({
     config = function()
         require("which-key").setup({})
     end},
+
+    -- Make jumping to places on screen easier 
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        },
+    },
 
     -- VimTeX for editing and compiling LaTeX
     {
@@ -132,33 +146,33 @@ require('lazy').setup({
     end},
 
     {
-      'saghen/blink.cmp',
-      dependencies = { 'rafamadriz/friendly-snippets' },
-      version = '1.*',
-      opts = {
-        -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-        -- 'super-tab' for mappings similar to vscode (tab to accept)
-        -- 'enter' for enter to accept
-        -- 'none' for no mappings
-        --
-        -- All presets have the following mappings:
-        -- C-space: Open menu or open docs if already open
-        -- C-n/C-p or Up/Down: Select next/previous item
-        -- C-e: Hide menu
-        -- C-k: Toggle signature help (if signature.enabled = true)
-        --
-        -- See :h blink-cmp-config-keymap for defining your own keymap
-        keymap = { preset = 'enter' },
-        signature = { enabled = true },
-        completion = { documentation = { auto_show = true } },
-        appearance = {
-          nerd_font_variant = 'mono'
+        'saghen/blink.cmp',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        version = '1.*',
+        opts = {
+            -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+            -- 'super-tab' for mappings similar to vscode (tab to accept)
+            -- 'enter' for enter to accept
+            -- 'none' for no mappings
+            --
+            -- All presets have the following mappings:
+            -- C-space: Open menu or open docs if already open
+            -- C-n/C-p or Up/Down: Select next/previous item
+            -- C-e: Hide menu
+            -- C-k: Toggle signature help (if signature.enabled = true)
+            --
+            -- See :h blink-cmp-config-keymap for defining your own keymap
+            keymap = { preset = 'enter' },
+            signature = { enabled = true },
+            completion = { documentation = { auto_show = true } },
+            appearance = {
+                nerd_font_variant = 'mono'
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+            fuzzy = { implementation = "prefer_rust_with_warning" }
         },
-        sources = {
-          default = { 'lsp', 'path', 'snippets', 'buffer' },
-        },
-        fuzzy = { implementation = "prefer_rust_with_warning" }
-      },
-      opts_extend = { "sources.default" }
+        opts_extend = { "sources.default" }
     }
 })
