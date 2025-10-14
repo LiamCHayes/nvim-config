@@ -8,6 +8,9 @@ vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>", { desc = "Toggle
 -- undo tree
 vim.keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", { desc = "Toggle Undotree" })
 
+-- zen mode
+vim.keymap.set("n", "<leader>z", ":ZenMode<cr>", { desc = "Toggle Zen mode" })
+
 -- lsp
 local lspconfig = require('lspconfig')
 
