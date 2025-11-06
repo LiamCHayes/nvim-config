@@ -34,6 +34,13 @@ require('lazy').setup({
     -- Undo tree
     { "mbbill/undotree", cmd = "UndotreeToggle" },
 
+    -- Lazygit integration
+    {
+        "kdheepak/lazygit.nvim",
+        cmd = { "LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile" },
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
     -- Show open buffers as tabs
     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
 
