@@ -101,6 +101,7 @@ require('lazy').setup({
         "kaarmu/typst.vim",
         ft = "typst",
         lazy = false,
+        dependencies = {"chomosuke/typst-preview.nvim"}
     },
     {
         "chomosuke/typst-preview.nvim",
