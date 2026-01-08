@@ -40,5 +40,5 @@ vim.keymap.set("n", "<leader>cl", ":w<cr> :VimtexCompile<cr>", { desc = "Compile
 vim.keymap.set("n", "<leader>ct", ":TypstPreview<cr> :TypstWatch<cr>", { desc = "Compile Typst document" })
 
 --Code Companion (AI)
-vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle", { desc = "Toggle AI chat buffer" })
+vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", { desc = "Toggle AI chat buffer" })
 
