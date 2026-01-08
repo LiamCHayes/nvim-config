@@ -185,5 +185,26 @@ require('lazy').setup({
             fuzzy = { implementation = "prefer_rust_with_warning" }
         },
         opts_extend = { "sources.default" }
+    },
+
+    {
+        "olimorris/codecompanion.nvim",
+        version = "^18.0.0",
+        opts = {
+            adapters = {
+                gemini = {
+                    client = {
+                        model = "gemini-pro",
+                    },
+                    authentication = {
+                        method = "oauth_personal",
+                    },
+                },
+            },
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
     }
 })
