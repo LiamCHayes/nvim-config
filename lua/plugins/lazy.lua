@@ -25,11 +25,28 @@ require('lazy').setup({
     { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
 
     -- File tree explorer
-    { 'nvim-tree/nvim-tree.lua', version="*", lazy=false, 
-    requires = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-        require("nvim-tree").setup {}
-    end},
+    -- {
+        -- 'nvim-tree/nvim-tree.lua',
+        -- version="*",
+        -- lazy=false,
+        -- requires = { "nvim-tree/nvim-web-devicons" },
+        -- config = function()
+            -- require("nvim-tree").setup {}
+        -- end
+    -- },
+
+    -- Directory editor
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        -- Optional dependencies
+        dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+        lazy = false,
+    },
 
     -- Undo tree
     { "mbbill/undotree", cmd = "UndotreeToggle" },
@@ -130,6 +147,35 @@ require('lazy').setup({
         end,
     },
 
+    -- Quickfix list improvements
+    {
+        'stevearc/quicker.nvim',
+        ft = "qf",
+        ---@module "quicker"
+        ---@type quicker.SetupOptions
+        opts = {},
+        config = function()
+            require("quicker").setup({
+                keys = {
+                    {
+                        ">",
+                        function()
+                            require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+                        end,
+                        desc = "Expand quickfix context",
+                    },
+                    {
+                        "<",
+                        function()
+                            require("quicker").collapse()
+                        end,
+                        desc = "Collapse quickfix context",
+                    },
+                },
+            })
+        end,
+    },
+
     -- lsp config
     {'mason-org/mason.nvim', tag = 'v1.11.0', pin = true, 
     config = function()
@@ -173,7 +219,7 @@ require('lazy').setup({
             -- C-k: Toggle signature help (if signature.enabled = true)
             --
             -- See :h blink-cmp-config-keymap for defining your own keymap
-            keymap = { preset = 'enter' },
+            keymap = { preset = 'default' },
             signature = { enabled = true },
             completion = { documentation = { auto_show = true } },
             appearance = {

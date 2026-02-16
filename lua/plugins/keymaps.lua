@@ -2,8 +2,8 @@
 vim.keymap.set("n", "<leader>fs", ":Telescope find_files<cr>", { desc = "Find files" })
 vim.keymap.set("n", "<leader>fz", ":Telescope live_grep<cr>", { desc = "Grep files" })
 
--- file tree
-vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>", { desc = "Toggle file tree" })
+-- file editor
+vim.keymap.set("n", "<leader>e", ":Oil --float<cr>", { desc = "Toggle file tree" })
 
 -- undo tree
 vim.keymap.set("n", "<leader>u", ":UndotreeToggle<cr>", { desc = "Toggle Undotree" })
