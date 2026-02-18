@@ -27,7 +27,6 @@ vim.api.nvim_set_keymap('n', '<leader>fr', ':%s/', { noremap = true, silent = tr
 
 -- open terminal in neovim
 vim.api.nvim_set_keymap('n', '<leader>t', ':term<cr>', { noremap = true, silent = true, desc = "Open terminal" })
-vim.api.nvim_set_keymap('t', '<Esc>', 'exit<cr><cr>', { noremap = true, silent = true, desc = "Close terminal" })
 
 -- get diagnostics quick fix list
 vim.api.nvim_set_keymap('n', '<leader>di', ':lua vim.diagnostic.setqflist()<cr>', { noremap = true, silent = true, desc = "Inspect diagnostics in quick fix list" })
