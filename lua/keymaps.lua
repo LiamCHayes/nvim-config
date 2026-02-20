@@ -30,3 +30,11 @@ vim.api.nvim_set_keymap('n', '<leader>t', ':term<cr>', { noremap = true, silent 
 
 -- get diagnostics quick fix list
 vim.api.nvim_set_keymap('n', '<leader>di', ':lua vim.diagnostic.setqflist()<cr>', { noremap = true, silent = true, desc = "Inspect diagnostics in quick fix list" })
+
+-- Quickfix list shortcuts
+vim.api.nvim_set_keymap('n', '<leader>cc', ':cclose<cr>', { noremap = true, silent = true, desc = "Close Quickfix list" })
+vim.api.nvim_set_keymap('n', '<leader>co', ':copen<cr>', { noremap = true, silent = true, desc = "Open Quickfix list" })
+vim.api.nvim_set_keymap('n', '<leader>cn', ':cnext<cr>', { noremap = true, silent = true, desc = "Next item in Quickfix list" })
+vim.api.nvim_set_keymap('n', '<leader>cp', ':cprev<cr>', { noremap = true, silent = true, desc = "Previous item in Quickfix list" })
+vim.api.nvim_set_keymap('n', '<leader>cgg', ':cfirst<cr>', { noremap = true, silent = true, desc = "First item in Quickfix list" })
+vim.api.nvim_set_keymap('n', '<leader>cG', ':clast<cr>', { noremap = true, silent = true, desc = "Last item in Quickfix list" })

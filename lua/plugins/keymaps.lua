@@ -34,11 +34,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_set_keymap('n', '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true, desc = "Show error message" })
 
 -- LaTeX compile
-vim.keymap.set("n", "<leader>cl", ":w<cr> :VimtexCompile<cr>", { desc = "Compile LaTeX document" })
+vim.keymap.set("n", "<leader>Cl", ":w<cr> :VimtexCompile<cr>", { desc = "Compile LaTeX document" })
 
 -- Typst compile
-vim.keymap.set("n", "<leader>ct", ":TypstPreview<cr> :TypstWatch<cr>", { desc = "Compile Typst document" })
+vim.keymap.set("n", "<leader>Ct", ":TypstPreview<cr> :TypstWatch<cr>", { desc = "Compile Typst document" })
 
 --Code Companion (AI)
-vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", { desc = "Toggle AI chat buffer" })
+-- vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", { desc = "Toggle AI chat buffer" })
 
