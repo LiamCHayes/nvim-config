@@ -1,6 +1,5 @@
 -- telescope
 vim.keymap.set("n", "<leader>fs", ":Telescope find_files<cr>", { desc = "Find files" })
-vim.keymap.set("n", "<leader>fz", ":Telescope live_grep<cr>", { desc = "Grep files" })
 
 -- file editor
 vim.keymap.set("n", "<leader>e", ":Oil --float<cr>", { desc = "Toggle file tree" })

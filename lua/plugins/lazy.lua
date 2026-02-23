@@ -25,7 +25,10 @@ require('lazy').setup({
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'}
+        },
         config = function()
             local actions = require("telescope.actions")
             require("telescope").setup({
@@ -34,7 +37,6 @@ require('lazy').setup({
                         i = {
                             -- Use <Tab> to select/multi-select items
                             ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-                            ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
                             -- "Smart Send": Sends selected items OR all items if none are selected
                             ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                         },
@@ -43,7 +45,14 @@ require('lazy').setup({
                         },
                     },
                 },
+                extensions = {
+                    fzf = {}
+                }
             })
+
+            require('telescope').load_extension('fzf')
+
+            require "config.telescope.multigrep".setup()
         end,
     },
 
