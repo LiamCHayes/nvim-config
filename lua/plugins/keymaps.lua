@@ -26,11 +26,13 @@ vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
 vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
 
 -- open terminals
-vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>TermSelect<cr>', { noremap = true, silent = true, desc = "Open specific terminal" })
+vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true, desc = "Toggle Terminals" })
+vim.api.nvim_set_keymap('n', '<leader>ts', '<cmd>TermSelect<cr>', { noremap = true, silent = true, desc = "Open specific terminal" })
 vim.api.nvim_set_keymap('n', '<leader>tn', '<cmd>ToggleTermSetName<cr>', { noremap = true, silent = true, desc = "Set terminal name" })
 vim.api.nvim_set_keymap('n', '<leader>th', '<cmd>ToggleTerm size=15 direction=horizontal<cr>', { noremap = true, silent = true, desc = "Horizontal terminal" })
 vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm size=60 direction=vertical<cr>', { noremap = true, silent = true, desc = "Vertical terminal" })
 vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', { noremap = true, silent = true, desc = "Floating terminal" })
+vim.keymap.set('n', '<leader>tb', '<cmd>ToggleTerm direction=tab<cr>', { noremap = true, silent = true, desc = "Buffer terminal" })
 
 -- zen mode
 vim.keymap.set("n", "<leader>z", ":ZenMode<cr>", { desc = "Toggle Zen mode" })
