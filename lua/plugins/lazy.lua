@@ -244,6 +244,9 @@ require('lazy').setup({
 
         -- C and C++
         lspconfig.clangd.setup{ capabilities = capabilities }
+
+        -- Zig
+        lspconfig.zls.setup{ capabilities = capabilities }
     end},
 
     {
